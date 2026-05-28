@@ -1,45 +1,59 @@
-Robô Autônomo em Plano Cartesiano
+# Robô Autônomo em Plano Cartesiano
 
 Projeto desenvolvido em linguagem C para a disciplina de Estrutura de Dados da Universidade Católica de Brasília (UCB).
 
 O sistema simula o deslocamento de um robô em um plano cartesiano utilizando listas encadeadas para armazenar:
 
-comandos de movimentação
-histórico de posições
-posição inicial e final
-quantidade de instruções executadas
-Estruturas Utilizadas
+* comandos de movimentação
+* histórico de posições
+* posição inicial e final
+* quantidade de instruções executadas
+
+---
+
+# Estruturas Utilizadas
 
 O projeto utiliza listas encadeadas implementadas com ponteiros através das seguintes estruturas:
 
-Comando
+## Comando
 
 Responsável por armazenar cada instrução do robô.
 
+```c
 typedef struct Comando {
     char Direcao;
     struct Comando * Proximo;
 } Comando;
+```
 
 Direções válidas:
 
-N → Norte
-S → Sul
-L → Leste
-O → Oeste
-Posicao
+* `N` → Norte
+* `S` → Sul
+* `L` → Leste
+* `O` → Oeste
+
+---
+
+## Posicao
 
 Responsável por armazenar as coordenadas visitadas pelo robô.
 
+```c
 typedef struct Posicao {
     int X;
     int Y;
     struct Posicao * Proximo;
 } Posicao;
-Caminho
+```
+
+---
+
+## Caminho
 
 Responsável por armazenar todas as informações do trajeto.
 
+```c
 typedef struct Caminho {
     Posicao * Inicio;
     Posicao * Fim;
@@ -47,43 +61,76 @@ typedef struct Caminho {
     Comando * Instrucoes;
     int N;
 } Caminho;
-Funcionalidades Implementadas
+```
+
+---
+
+# Funcionalidades Implementadas
 
 O projeto implementa as seguintes funções:
 
-Função	Descrição
-InicializarCaminho	Cria o caminho do robô
-DestruirCaminho	Libera toda memória alocada
-DeterminarFim	Retorna a posição final
-HistoricoPosicoes	Retorna o histórico completo
-CalcularDistanciaTotal	Soma total dos deslocamentos
-CalcularDistanciaGeometrica	Distância euclidiana
-CalcularDistanciaManhattan	Distância Manhattan
-ContarInstrucoes	Quantidade de comandos
-Organização dos Arquivos
+| Função                        | Descrição                    |
+| ----------------------------- | ---------------------------- |
+| `InicializarCaminho`          | Cria o caminho do robô       |
+| `DestruirCaminho`             | Libera toda memória alocada  |
+| `DeterminarFim`               | Retorna a posição final      |
+| `HistoricoPosicoes`           | Retorna o histórico completo |
+| `CalcularDistanciaTotal`      | Soma total dos deslocamentos |
+| `CalcularDistanciaGeometrica` | Distância euclidiana         |
+| `CalcularDistanciaManhattan`  | Distância Manhattan          |
+| `ContarInstrucoes`            | Quantidade de comandos       |
+
+---
+
+# Organização dos Arquivos
+
+```text
 Projeto/
 │
 ├── caminho.h
 ├── main.c
 └── 25104110.c
-Como Compilar
+```
+
+---
+
+# Como Compilar
 
 Utilizando GCC:
 
+```bash
 gcc 25104110.c main.c -o navegacao
-Como Executar
+```
+
+---
+
+# Como Executar
 
 No Windows:
 
+```bash
 navegacao.exe
+```
 
 No Linux:
 
+```bash
 ./navegacao
-Exemplo de Execução
-Entrada
+```
+
+---
+
+# Exemplo de Execução
+
+## Entrada
+
+```c
 InicializarCaminho("LLLLLLLNNNNN", 2, 2);
-Saída Esperada
+```
+
+## Saída Esperada
+
+```text
 Posicao final: (9, 7)
 
 Historico de posicoes:
@@ -96,34 +143,52 @@ Distancia total percorrida: 12
 Distancia geometrica: 8.60
 Distancia de Manhattan: 12
 Quantidade de instrucoes: 12
-Tratamento de Erros
+```
+
+---
+
+# Tratamento de Erros
 
 O sistema possui tratamento para:
 
-comandos inválidos
-falha de alocação dinâmica
-ponteiros nulos
-inconsistências no caminho
+* comandos inválidos
+* falha de alocação dinâmica
+* ponteiros nulos
+* inconsistências no caminho
 
-Comandos inválidos resultam em retorno NULL.
+Comandos inválidos resultam em retorno `NULL`.
 
 Exemplo inválido:
 
+```c
 InicializarCaminho("LLAXN", 0, 0);
-Conceitos Utilizados
-listas encadeadas
-ponteiros
-alocação dinâmica
-manipulação de memória
-tipo abstrato de dados (TAD)
-estruturas em C
-encadeamento de nós
-percurso de listas
-Compilador Utilizado
+```
+
+---
+
+# Conceitos Utilizados
+
+* listas encadeadas
+* ponteiros
+* alocação dinâmica
+* manipulação de memória
+* tipo abstrato de dados (TAD)
+* estruturas em C
+* encadeamento de nós
+* percurso de listas
+
+---
+
+# Compilador Utilizado
 
 Projeto compatível com:
 
+```text
 GCC (GNU Compiler Collection)
-Autor
+```
+
+---
+
+# Autor
 
 Projeto acadêmico desenvolvido para a disciplina de Estrutura de Dados — UCB.
